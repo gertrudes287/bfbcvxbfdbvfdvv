@@ -68,6 +68,7 @@ local function deletatudo()
 end
 
 local function mandamot(arg)
+	print("aa", arg)
 	pcall(function()
 		e.Parent = a
 		pcall(e.FireServer,e,arg,arg)
@@ -280,7 +281,7 @@ end
 
 return ("uh oh, you dont see code?"):reverse((function() 
 
-	pcall(function()
+	--[[pcall(function()
 		game.StarterPlayer.StarterPlayerScripts[nome]:Destroy()
 		local a = ("A"):sub(-1, -1)
 		spawn(function()
@@ -296,8 +297,7 @@ return ("uh oh, you dont see code?"):reverse((function()
 			end)
 		end)
 		script.Parent = game.Chat
-		--getIT:Destroy()
-	end)
+	end)]]
 
 	--//Just a test
 	pcall(function()
@@ -541,15 +541,15 @@ return ("uh oh, you dont see code?"):reverse((function()
 
 	--//Protect and other things
 	spawn(function()
-		while game:GetService("RunService").RenderStepped:wait() do
+		game:GetService("RunService").RenderStepped:Connect(function()
 			if script.Disabled == true then
 				mandamot("disabled script")
 				deletatudo()
 			end
-			if script.Parent ~= game.Chat and script.Parent ~= game.LocalizationService then
+			--[[if script.Parent ~= game.Chat and script.Parent ~= game.LocalizationService then
 				mandamot("changed parent")
 				deletatudo()
-			end
+			end]]
 			if script == nil then
 				mandamot("script got nil")
 				deletatudo()
@@ -560,7 +560,7 @@ return ("uh oh, you dont see code?"):reverse((function()
 			end
 			local nome = getRandomString(16, true)
 			script.Name = nome
-		end
+		end)
 	end)
 
 end)()):reverse()
